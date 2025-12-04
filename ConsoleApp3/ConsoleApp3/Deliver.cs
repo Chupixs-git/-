@@ -13,6 +13,8 @@ namespace ConsoleApp3
         public string Recipient { get; }
         public abstract int BaseCost { get;}
 
+        public abstract DateTime SendTime {get; }
+
         public Deliver(string address,string recipient) 
         {
             Address = address;
@@ -28,6 +30,7 @@ namespace ConsoleApp3
             Console.WriteLine($"Адрес : {Address} ");
             Console.WriteLine($"Тип Доставки : {GetType().Name} ");
             Console.WriteLine($"Стоимость : {CalculateCost()} ");
+            Console.WriteLine($"Дата отправки :{SendTime.ToShortDateString()}");
             Console.WriteLine($"Время : {GetDeliveryTime()} ");
 
         }
@@ -37,15 +40,26 @@ namespace ConsoleApp3
         private float Distance;
         private float Weight;
         private int basecost = 400;
+        private DateTime sendTime;
+        
 
         public override int BaseCost
         {
             get { return basecost; }
         }
-        public HomeDelivery(float distance, float weight,string address,string recipient) : base(address, recipient) 
+        public override DateTime SendTime 
+        {
+            get
+            {
+                return sendTime;
+            }
+        
+        }
+        public HomeDelivery(float distance, float weight,string address,string recipient,DateTime sendtime) : base(address, recipient) 
         {
             Distance = distance;
             Weight = weight;
+            sendTime = sendtime;
         }
         public override float CalculateCost()
         {
@@ -68,14 +82,25 @@ namespace ConsoleApp3
         
         private float Weight;
         private int basecost = 400;
+        private DateTime sendTime;
+
+        public override DateTime SendTime
+        {
+            get
+            {
+                return sendTime;
+            }
+
+        }
 
         public override int BaseCost
         {
             get { return basecost; }
         }
-        public PickPointDelivery(float weight, string address, string recipient) : base(address, recipient)
+        public PickPointDelivery(float weight, string address, string recipient,DateTime sandtime) : base(address, recipient)
         {
             Weight = weight;
+            sendTime = sandtime;
         }
         public override float CalculateCost()
         {
@@ -91,15 +116,27 @@ namespace ConsoleApp3
         private float Distance;
         private float Weight;
         private int basecost = 400;
+        private DateTime sendTime;
+
+        public override DateTime SendTime
+        {
+            get
+            {
+                return sendTime;
+            }
+
+        }
 
         public override int BaseCost
         {
             get { return basecost; }
         }
-        public ExpressDelivery(float distance, float weight, string address, string recipient) : base(address, recipient)
+        public ExpressDelivery(float distance, float weight, string address, string recipient,DateTime sendtime) : base(address, recipient)
         {
             Distance = distance;
             Weight = weight;
+            sendTime = sendtime;
+
         }
         public override float CalculateCost()
         {

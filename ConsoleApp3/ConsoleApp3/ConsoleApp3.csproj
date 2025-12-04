@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Abstract.cs" />
     <Compile Include="Animal.cs" />
+    <Compile Include="AntiFails.cs" />
     <Compile Include="BankAccount.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Car2.0.cs" />
